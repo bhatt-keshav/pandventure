@@ -19,3 +19,22 @@ df.groupby(by='Date')[['Mata', 'Data']].transform(sum)
 
 # To create staggered grouping, use multiple group by columns
 df.groupby(by=['Date', 'Data']).sum()
+
+# From SO [https://stackoverflow.com/questions/19523277/renaming-column-names-in-pandas-groupby-function]
+df = pd.DataFrame({'A' : list('wwwwxxxx'), 
+                   'B':list('yyzzyyzz'), 
+                   'C':np.random.rand(8), 
+                   'D':np.random.rand(8)})
+
+   A  B         C         D
+0  w  y  0.643784  0.828486
+1  w  y  0.308682  0.994078
+2  w  z  0.518000  0.725663
+3  w  z  0.486656  0.259547
+4  x  y  0.089913  0.238452
+5  x  y  0.688177  0.753107
+6  x  z  0.955035  0.462677
+7  x  z  0.892066  0.368850
+Let's say we want to group by columns A, B and aggregate column C with mean and median and aggregate column D with max. The following code would do this.
+
+df.groupby(['A', 'B']).agg({'C':['mean', 'median'], 'D':'max'})
