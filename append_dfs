@@ -1,0 +1,8 @@
+# The idiomatic way to append DataFrames (it to collect all your smaller DataFrames into a list, and then make one single call to pd.concat.
+# https://stackoverflow.com/a/76020749/4451288
+
+df_list = []
+for df in some_function_that_yields_df():
+    df_list.append(df)
+
+big_df = pd.concat(df_list)
