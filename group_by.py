@@ -11,6 +11,9 @@ df = df.sort_values('Date')
 # Basic use case, give summary statistics
 df.groupby(by='Date').sum()
 
+# To perform an aggregation for a specific column do:
+df.groupby('A')['C'].prod() # groups by A and does a product on C
+
 # Second use case with transform
 # Same output as above, but the series length is same as that of the original df
 # Whereas the first case would have given a much reduced df with nrows = unique group by elements
