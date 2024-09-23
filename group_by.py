@@ -15,6 +15,9 @@ df.groupby(by='Date').sum()
 # You can use other grouping mechanisms besides sum for instance prod()
 df.groupby('A')['C'].prod() # groups by A and does a product on C
 
+# Use reset index to move the index to a column and make the grouped series a df
+df_grouped = series_grouped.reset_index()
+
 # To groupby without turning grouped by column into index
 df.groupby(['col2','col3'], as_index=False).sum()
 
