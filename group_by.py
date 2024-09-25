@@ -48,3 +48,7 @@ df = pd.DataFrame({'A' : list('wwwwxxxx'),
 Let's say we want to group by columns A, B and aggregate column C with mean and median and aggregate column D with max. The following code would do this.
 
 df.groupby(['A', 'B']).agg({'C':['mean', 'median'], 'D':'max'})
+
+# Given a timeseries index you can also use resample, which does essentially groupby. 
+# But takes care of time intervals under the hood
+series.resample('3min', label='right').sum()
